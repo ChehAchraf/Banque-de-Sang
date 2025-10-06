@@ -6,9 +6,13 @@ import org.medical.banquedesang.enums.GroupeSanguin;
 
 import java.time.LocalDate;
 
+@MappedSuperclass
 
 public abstract class Account {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nom;
     private String prenom;
     private String cin;
     private String telephone;
@@ -23,7 +27,9 @@ public abstract class Account {
     public Account (){
     }
 
-    public Account(String prenom, String cin, String telephone, LocalDate dateNaissance, double poids, String sexe, GroupeSanguin groupesanguin, Disponibilite disponibilite, String maladie, int id, String nom) {
+    public Account(Long id,String nom, String prenom, String cin, String telephone, LocalDate dateNaissance, double poids, String sexe, GroupeSanguin groupesanguin, Disponibilite disponibilite, String maladie) {
+        this.id = id;
+        this.nom = nom;
         this.prenom = prenom;
         this.cin = cin;
         this.telephone = telephone;
@@ -33,18 +39,13 @@ public abstract class Account {
         this.groupesanguin = groupesanguin;
         this.disponibilite = disponibilite;
         this.maladie = maladie;
-        this.id = id;
-        this.nom = nom;
     }
 
-    private int id ;
-    private String nom;
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -127,7 +128,4 @@ public abstract class Account {
     public void setMaladie(String maladie) {
         this.maladie = maladie;
     }
-
-
-
 }
