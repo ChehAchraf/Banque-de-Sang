@@ -3,7 +3,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd"
              version="3.2">
-    <persistence-unit name="default">
+    <persistence-unit name="banque_sang_db">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 
@@ -15,7 +15,7 @@
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/banque_sang_db"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
-            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="jakarta.persistence.jdbc.password" value="ashraf2025"/>
 
             <!-- Hibernate Options -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>

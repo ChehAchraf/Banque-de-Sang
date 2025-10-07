@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="col-span-2 p-6 md:p-8">
-                        <form action="#" method="post" class="space-y-8" novalidate>
+                        <form action="${pageContext.request.contextPath}/add/donneur" method="post" class="space-y-8" novalidate>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="nom" class="block text-sm font-medium text-gray-700">Nom</label>
@@ -108,16 +108,16 @@
 
                                 <div>
                                     <label for="groupeSanguin" class="block text-sm font-medium text-gray-700">Groupe sanguin</label>
-                                    <select id="groupeSanguin" name="groupeSanguin" required class="mt-2 block w-full rounded-lg border-gray-300 bg-white shadow-sm focus:ring-red-600 focus:border-red-600">
+                                    <select id="groupeSanguin" name="groupesanguin" required class="mt-2 block w-full rounded-lg border-gray-300 bg-white shadow-sm focus:ring-red-600 focus:border-red-600">
                                         <option value="" disabled selected>Choisir un groupe</option>
-                                        <option>O+</option>
-                                        <option>O-</option>
-                                        <option>A+</option>
-                                        <option>A-</option>
-                                        <option>B+</option>
-                                        <option>B-</option>
-                                        <option>AB+</option>
-                                        <option>AB-</option>
+                                        <option value="O_POS">O+</option>
+                                        <option value="O_NEG">O-</option>
+                                        <option value="A_POS">A+</option>
+                                        <option value="A_NEG">A-</option>
+                                        <option value="B_POS">B+</option>
+                                        <option value="B_NEG">B-</option>
+                                        <option value="AB_POS">AB+</option>
+                                        <option value="AB_NEG">AB-</option>
                                     </select>
                                 </div>
                                 <div>
@@ -139,8 +139,8 @@
                                 </div>
 
                                 <div class="md:col-span-2">
-                                    <label for="conditions" class="block text-sm font-medium text-gray-700">Conditions médicales</label>
-                                    <textarea id="conditions" name="conditions" rows="3" placeholder="Maladies chroniques, allergies, traitements en cours…" class="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600"></textarea>
+                                    <label for="maladie" class="block text-sm font-medium text-gray-700">Conditions médicales</label>
+                                    <textarea id="maladie" name="maladie" rows="3" placeholder="Maladies chroniques, allergies, traitements en cours…" class="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600"></textarea>
                                 </div>
                             </div>
 
@@ -149,6 +149,9 @@
                                 <button type="submit" class="inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">Enregistrer le donneur</button>
                             </div>
                         </form>
+                        <% if (request.getAttribute("error") != null) { %>
+                            <p style="color:red"><%= request.getAttribute("error") %></p>
+                        <% } %>
                     </div>
                 </div>
             </div>

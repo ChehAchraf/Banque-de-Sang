@@ -17,7 +17,7 @@ public abstract class Account {
     private String cin;
     private String telephone;
     private LocalDate dateNaissance;
-    private double poids;
+    private Double poids;
     private String sexe;
     private GroupeSanguin groupesanguin;
     private Disponibilite disponibilite;
