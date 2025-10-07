@@ -39,4 +39,9 @@
         <url-pattern>/add/receveur</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>ReceveurServlet</servlet-name>
+        <url-pattern>/operation/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>

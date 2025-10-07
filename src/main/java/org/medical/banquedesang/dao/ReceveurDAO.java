@@ -1,85 +1,83 @@
 package org.medical.banquedesang.dao;
+
 import jakarta.persistence.EntityManager;
 import org.medical.banquedesang.entities.Receveur;
 import org.medical.banquedesang.util.JPAUtil;
-
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ReceveurDAO {
     private static final Logger logger =  Logger.getLogger(ReceveurDAO.class.getName());
-    private EntityManager em;
 
-    public ReceveurDAO() {
-        em = JPAUtil.getEntityManagerFactory().createEntityManager();
-    }
+    public ReceveurDAO() { }
 
     // add receveur
     public void addReceveur(Receveur r) {
-        try{
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
             em.getTransaction().begin();
             em.persist(r);
             em.getTransaction().commit();
-        }catch(Exception e){
-            logger.log(Level.SEVERE,e.getMessage(),e);
-        }finally{
-            em.getTransaction().rollback();
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage(), e);
+            if (em.getTransaction().isActive()) em.getTransaction().rollback();
+            throw e;
+        } finally {
             em.close();
         }
     }
 
     // find receveur by id
     public Receveur findById(Long id) {
-        try{
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
             return em.find(Receveur.class, id);
-        }catch(Exception e){
-            logger.log(Level.SEVERE,e.getMessage(),e);
-        }finally{
-            em.getTransaction().rollback();
+        } finally {
             em.close();
         }
-        return null;
     }
 
     // find all receveur
     public List<Receveur> findAll() {
-        try{
-            em.getTransaction().begin();
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
             return em.createQuery("select r from Receveur r", Receveur.class).getResultList();
-        }catch(Exception e){
-            logger.log(Level.SEVERE,e.getMessage(),e);
-        }finally{
-            em.getTransaction().rollback();
+        } finally {
             em.close();
         }
-        return null;
     }
 
     // update receveur
     public void update(Receveur r) {
-        try{
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
             em.getTransaction().begin();
             em.merge(r);
             em.getTransaction().commit();
-        }catch(Exception e){
-            logger.log(Level.SEVERE,e.getMessage(),e);
-        }finally{
-            em.getTransaction().rollback();
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage(), e);
+            if (em.getTransaction().isActive()) em.getTransaction().rollback();
+            throw e;
+        } finally {
             em.close();
         }
     }
 
     // delete Receveur
     public void delete(Receveur r) {
-        try{
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
             em.getTransaction().begin();
-            em.remove(r);
-        }catch(Exception e){
-            logger.log(Level.SEVERE,e.getMessage(),e);
-        }finally{
-            em.getTransaction().rollback();
+            em.remove(em.contains(r) ? r : em.merge(r));
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage(), e);
+            if (em.getTransaction().isActive()) em.getTransaction().rollback();
+            throw e;
+        } finally {
             em.close();
         }
     }
+
 }

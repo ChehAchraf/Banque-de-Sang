@@ -38,7 +38,7 @@ public class DonneurServlet extends HttpServlet {
             donneur.setDisponibilite(Disponibilite.valueOf(request.getParameter("disponibilite")));
             donneur.setMaladie(request.getParameter("maladie"));
             service.createDonneur(donneur);
-            response.sendRedirect("success.jsp");
+            response.sendRedirect(request.getContextPath() + "/operation/success.jsp");
         }catch(Exception e){
             request.setAttribute("groupesSanguins", GroupeSanguin.values());
             request.setAttribute("error", e.getMessage());
