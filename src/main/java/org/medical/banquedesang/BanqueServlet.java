@@ -8,7 +8,7 @@ public class BanqueServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
-        response.getWriter().println("<h1>Bienvenue à la Banque de Sang 🩸</h1>");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);
     }
 }
