@@ -9,8 +9,8 @@ import org.medical.banquedesang.validation.DonneurValidation;
 public class DonneurService {
     private DonneurDAO donneurDAO;
 
-    public DonneurService() {
-        this.donneurDAO = new DonneurDAO();
+    public DonneurService(DonneurDAO donneurDAO) {
+        this.donneurDAO = donneurDAO;
     }
 
     public void createDonneur(Donneur donneur) throws Exception {
@@ -19,19 +19,19 @@ public class DonneurService {
     }
 
     public List<Donneur> findAllDonneurs() {
-        return donneurDAO.findAll();
+        return donneurDAO.findAllDonneurs();
     }
 
     public Donneur findDonneurById(Long id) {
-        return donneurDAO.findById(id);
+        return donneurDAO.findDonneurById(id);
     }
 
     public void updateDonneur(Donneur donneur) throws Exception {
         DonneurValidation.Validate(donneur);
-        donneurDAO.update(donneur);
+        donneurDAO.updateDonneur(donneur);
     }
 
     public void deleteDonneur(Donneur donneur) {
-        donneurDAO.delete(donneur);
+        donneurDAO.deleteDonneur(donneur);
     }
 }

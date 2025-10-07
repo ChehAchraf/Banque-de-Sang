@@ -5,7 +5,6 @@ import org.medical.banquedesang.entities.Donneur;
 import org.medical.banquedesang.util.JPAUtil;
 
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -16,44 +15,55 @@ public class DonneurDAO {
     public DonneurDAO() {
     }
 
-    public DonneurDAO(EntityManager em) {
-        this.em = em;
-    }
-    //    add Donneur
-    public void addDonneur(Donneur donneur) {
+    public void addDonneur(Donneur d) {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(donneur);
+            em.persist(d);
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            logger.log(Level.SEVERE, ex.getMessage(), ex);
+        } finally {
+            em.close();
         }
     }
-    // find by id
-    public Donneur findById(Long id){
+
+    public Donneur findDonneurById(Long id) {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
             return em.find(Donneur.class, id);
+        } finally {
+            em.close();
+        }
     }
 
-    // get all Donneur
-    public List<Donneur> findAll(){
-        return em.createQuery("SELECT d FROM Donneur d", Donneur.class).getResultList();
+    public List<Donneur> findAllDonneurs() {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
+            return em.createQuery("SELECT d FROM Donneur d", Donneur.class).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
-    // update donneur
-    public void update(Donneur donneur){
-        em.getTransaction().begin();
-        em.merge(donneur);
-        em.getTransaction().commit();
+    public void updateDonneur(Donneur d) {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(d);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
-    // delete donneur
-    public void delete(Donneur donneur){
-        em.getTransaction().begin();
-        em.remove(em.contains(donneur) ? donneur : em.merge(donneur));
-        em.getTransaction().commit();
+    public void deleteDonneur(Donneur d) {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.remove(em.contains(d) ? d : em.merge(d));
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
-
-
-
 }
 
