@@ -9,6 +9,11 @@
         <servlet-class>org.medical.banquedesang.BanqueServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>DonneurServlet</servlet-name>
+        <servlet-class>org.medical.banquedesang.controller.DonneurServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/assets/*</url-pattern>
@@ -17,6 +22,11 @@
     <servlet-mapping>
         <servlet-name>BanqueServlet</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DonneurServlet</servlet-name>
+        <url-pattern>/add/donneur</url-pattern>
     </servlet-mapping>
 
 

@@ -12,7 +12,7 @@
     </button>
 
     <div id="mobile-menu" class="hidden absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden">
-        <a href="#" class="block">Home</a>
+        <a href="/" class="block">Home</a>
         <a href="#" class="block">About</a>
         <a href="#" class="block">Contact</a>
 <%--        <button class="cursor-pointer px-6 py-2 mt-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full text-sm">--%>
