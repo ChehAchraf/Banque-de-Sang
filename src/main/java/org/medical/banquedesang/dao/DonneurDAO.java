@@ -13,6 +13,9 @@ public class DonneurDAO {
     private static final Logger logger =  Logger.getLogger(DonneurDAO.class.getName());
     private EntityManager em;
 
+    public DonneurDAO() {
+    }
+
     public DonneurDAO(EntityManager em) {
         this.em = em;
     }
