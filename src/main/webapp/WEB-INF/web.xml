@@ -19,6 +19,11 @@
         <servlet-class>org.medical.banquedesang.controller.ReceveurServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>ReceveurDetailsServlet</servlet-name>
+        <servlet-class>org.medical.banquedesang.controller.ReceveurDetailsServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/assets/*</url-pattern>
@@ -26,7 +31,7 @@
 
     <servlet-mapping>
         <servlet-name>BanqueServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/banque-sang</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -40,8 +45,18 @@
     </servlet-mapping>
 
     <servlet-mapping>
+        <servlet-name>ReceveurDetailsServlet</servlet-name>
+        <url-pattern>/receveur/details</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
         <servlet-name>ReceveurServlet</servlet-name>
         <url-pattern>/operation/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DonneurServlet</servlet-name>
+        <url-pattern>/donneur/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -24,6 +24,12 @@ public class ReceveurServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if(action == null){
+            request.setAttribute("receveurs", service.findAll());
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);
+        }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/receveur/addReceveur.jsp");
         dispatcher.forward(request, response);
     }

@@ -18,6 +18,7 @@ import java.time.LocalDate;
 public class DonneurServlet extends HttpServlet {
 
     private DonneurService service;
+    
 
     @Override
     public void init() throws ServletException {
@@ -48,6 +49,7 @@ public class DonneurServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         request.setAttribute("groupesSanguins", GroupeSanguin.values());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/donneur/addDonneur.jsp");
         dispatcher.forward(request, response);
