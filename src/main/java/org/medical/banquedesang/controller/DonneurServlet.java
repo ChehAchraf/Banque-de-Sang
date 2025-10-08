@@ -46,12 +46,5 @@ public class DonneurServlet extends HttpServlet {
             request.getRequestDispatcher("/donneur/addDonneur.jsp").forward(request, response);
         }
     }
-    
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        request.setAttribute("groupesSanguins", GroupeSanguin.values());
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/donneur/addDonneur.jsp");
-        dispatcher.forward(request, response);
-    }
+
 }

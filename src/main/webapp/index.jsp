@@ -14,7 +14,7 @@
 <!-- Include Navbar -->
 <jsp:include page="partials/navbar.jsp"/>
 <!-- Hero Section (Index) -->
-<header class="bg-gradient-to-br from-red-600 via-red-700 to-red-800">
+<header class="bg-[url('assets/img/heroimage.svg')] bg-cover bg-center bg-no-repeat bg-red-600 bg-opacity-40">
     <div class="max-w-6xl mx-auto px-4 py-16 md:py-20">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div class="text-red-50 max-md:text-center">
@@ -32,10 +32,7 @@
                         les donneurs disponibles</a>
                 </div>
             </div>
-            <div class="relative">
-                <img src="assets/img/heroimage.svg" alt="Illustration don de sang"
-                     class="w-full h-auto drop-shadow-2xl"/>
-            </div>
+            
         </div>
     </div>
     <div class="bg-white/5 backdrop-blur-sm border-t border-white/10">

@@ -24,7 +24,7 @@
                     <p class="mt-4 md:mt-6 text-red-100/90 text-base md:text-lg">Chaque don compte. Renseignez les informations du donneur en toute simplicité et confidentialité.</p>
                     <div class="mt-8 flex items-center gap-3">
                         <a href="#donneur-form" class="inline-flex items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold text-red-700 bg-white hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-white">Commencer l'inscription</a>
-                        <a href="../index.jsp" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-white/90 hover:text-white ring-1 ring-inset ring-white/30 focus:outline-none focus:ring-2 focus:ring-white/70">Retour à l'accueil</a>
+                        <a href="${pageContext.request.contextPath}/" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-white/90 hover:text-white ring-1 ring-inset ring-white/30 focus:outline-none focus:ring-2 focus:ring-white/70">Retour à l'accueil</a>
                     </div>
                 </div>
                 <div class="relative">

@@ -13,7 +13,7 @@
 
     <div id="mobile-menu" class="hidden absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden">
         <a href="/" class="block">Home</a>
-        <a href="#" class="block">About</a>
+        <a href="${pageContext.request.contextPath}/donneur/form">Ajouter Donneur</a>
         <a href="#" class="block">Contact</a>
 <%--        <button class="cursor-pointer px-6 py-2 mt-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full text-sm">--%>
 <%--            Login--%>
@@ -22,7 +22,7 @@
 
     <div class="hidden sm:flex items-center gap-8">
         <a href="#">Home</a>
-        <a href="#">About</a>
+        <a href="${pageContext.request.contextPath}/donneur/form">Ajouter Donneur</a>
         <a href="#">Contact</a>
 
 <%--        <div class="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">--%>

@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="mt-8 flex gap-3">
-                    <a href="<%= request.getContextPath() %>/" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">Retour</a>
+                    <a href="<%= request.getContextPath() %>/banque-sang" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">Retour</a>
                     <a href="tel:<%= r != null ? r.getTelephone() : "" %>" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 ring-1 ring-inset ring-red-200 focus:outline-none focus:ring-2 focus:ring-red-300">Appeler</a>
                 </div>
             </div>

@@ -10,6 +10,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>DonneurFormServlet</servlet-name>
+        <servlet-class>org.medical.banquedesang.controller.DonneurFormServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>DonneurServlet</servlet-name>
         <servlet-class>org.medical.banquedesang.controller.DonneurServlet</servlet-class>
     </servlet>
@@ -27,6 +32,11 @@
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/assets/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DonneurFormServlet</servlet-name>
+        <url-pattern>/donneur/form</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -54,9 +64,5 @@
         <url-pattern>/operation/*</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>DonneurServlet</servlet-name>
-        <url-pattern>/donneur/*</url-pattern>
-    </servlet-mapping>
 
 </web-app>
