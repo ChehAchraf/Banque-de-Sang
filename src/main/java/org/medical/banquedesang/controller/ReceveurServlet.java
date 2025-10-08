@@ -11,6 +11,8 @@ import java.time.LocalDate;
 import org.medical.banquedesang.entities.Receveur;
 import org.medical.banquedesang.enums.Disponibilite;
 import org.medical.banquedesang.enums.GroupeSanguin;
+import org.medical.banquedesang.enums.Urgence;
+import org.medical.banquedesang.enums.EtatReceveur;
 import org.medical.banquedesang.dao.ReceveurDAO;
 import org.medical.banquedesang.service.ReceveurService;
 
@@ -27,14 +29,16 @@ public class ReceveurServlet extends HttpServlet {
         String action = request.getParameter("action");
         
         if (action == null) {
-            // Show list of receveurs
-            request.setAttribute("receveurs", service.findAll());
+            // Show list of receveurs sorted by priority
+            request.setAttribute("receveurs", service.findAllSortedByPriority());
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/receveur/list.jsp");
             dispatcher.forward(request, response);
         } else {
             switch (action) {
                 case "add":
                     // Show add form
+                    request.setAttribute("groupesSanguins", GroupeSanguin.values());
+                    request.setAttribute("urgences", Urgence.values());
                     RequestDispatcher addDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/receveur/addReceveur.jsp");
                     addDispatcher.forward(request, response);
                     break;
@@ -47,6 +51,8 @@ public class ReceveurServlet extends HttpServlet {
                             Receveur receveur = service.findById(id);
                             if (receveur != null) {
                                 request.setAttribute("receveur", receveur);
+                                request.setAttribute("groupesSanguins", GroupeSanguin.values());
+                                request.setAttribute("urgences", Urgence.values());
                                 RequestDispatcher editDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/receveur/addReceveur.jsp");
                                 editDispatcher.forward(request, response);
                             } else {
@@ -77,7 +83,7 @@ public class ReceveurServlet extends HttpServlet {
                     break;
                 default:
                     // Unknown action, show list
-                    request.setAttribute("receveurs", service.findAll());
+                    request.setAttribute("receveurs", service.findAllSortedByPriority());
                     RequestDispatcher defaultDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/receveur/list.jsp");
                     defaultDispatcher.forward(request, response);
                     break;
@@ -112,8 +118,9 @@ public class ReceveurServlet extends HttpServlet {
             receveur.setPoids(Double.parseDouble(request.getParameter("poids")));
             receveur.setSexe(request.getParameter("sexe"));
             receveur.setMaladie(request.getParameter("maladie"));
-            receveur.setDisponibilite(Disponibilite.valueOf(request.getParameter("disponibilite")));
             receveur.setGroupesanguin(GroupeSanguin.valueOf(request.getParameter("groupesanguin")));
+            receveur.setUrgence(Urgence.valueOf(request.getParameter("urgence")));
+
             
             // Save or update
             if (idParam != null && !idParam.isEmpty()) {
@@ -125,6 +132,8 @@ public class ReceveurServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/receveur");
         }catch(Exception e){
             request.setAttribute("error", e.getMessage());
+            request.setAttribute("groupesSanguins", GroupeSanguin.values());
+            request.setAttribute("urgences", Urgence.values());
             request.getRequestDispatcher("/WEB-INF/jsp/receveur/addReceveur.jsp").forward(request, response);
         }
     }

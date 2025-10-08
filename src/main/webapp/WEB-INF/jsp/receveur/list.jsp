@@ -44,7 +44,8 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom & Prénom</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Groupe Sanguin</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Priorité</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Urgence</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">État</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
@@ -78,9 +79,34 @@
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${receveur.disponibilite == 'DISPONIBLE' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800'}">
-                                        ${receveur.disponibilite == 'DISPONIBLE' ? 'Urgent' : 'Non urgent'}
-                                    </span>
+                                    <c:if test="${receveur.urgence != null}">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                            receveur.urgence.name() == 'CRITIQUE' ? 'bg-red-100 text-red-800' :
+                                            receveur.urgence.name() == 'URGENT' ? 'bg-orange-100 text-orange-800' :
+                                            'bg-blue-100 text-blue-800'
+                                        }">
+                                            <c:choose>
+                                                <c:when test="${receveur.urgence.name() == 'CRITIQUE'}">Critique (${receveur.urgence.pochesRequises} poches)</c:when>
+                                                <c:when test="${receveur.urgence.name() == 'URGENT'}">Urgent (${receveur.urgence.pochesRequises} poches)</c:when>
+                                                <c:otherwise>Normal (${receveur.urgence.pochesRequises} poche)</c:otherwise>
+                                            </c:choose>
+                                        </span>
+                                    </c:if>
+                                    <c:if test="${receveur.urgence == null}">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">Non spécifié</span>
+                                    </c:if>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <c:if test="${receveur.etatReceveur != null}">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                            receveur.etatReceveur.name() == 'SATISFAIT' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                                        }">
+                                            ${receveur.etatReceveur.label} (${receveur.nombreDonneursAssocies}/${receveur.pochesRequises})
+                                        </span>
+                                    </c:if>
+                                    <c:if test="${receveur.etatReceveur == null}">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">En attente</span>
+                                    </c:if>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     <div class="flex items-center space-x-3">
@@ -96,7 +122,7 @@
                         
                         <c:if test="${empty receveurs}">
                             <tr>
-                                <td colspan="5" class="px-6 py-12 text-center">
+                                <td colspan="6" class="px-6 py-12 text-center">
                                     <div class="text-gray-500">
                                         <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>

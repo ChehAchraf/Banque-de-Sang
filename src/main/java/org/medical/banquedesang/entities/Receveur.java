@@ -1,16 +1,26 @@
 package org.medical.banquedesang.entities;
 
 import jakarta.persistence.*;
+import org.medical.banquedesang.enums.EtatReceveur;
+import org.medical.banquedesang.enums.Urgence;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name="receveur")
-
-public class Receveur extends Account{
-    @OneToMany(mappedBy = "receveur",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Donneur> donneurs =  new ArrayList<Donneur>();
+public class Receveur extends Account {
+    
+    @OneToMany(mappedBy = "receveur", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Donneur> donneurs = new ArrayList<>();
+    
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Urgence urgence = Urgence.NORMAL; // Default to NORMAL
+    
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EtatReceveur etatReceveur = EtatReceveur.EN_ATTENTE; // Default to EN_ATTENTE
 
     public Receveur(){
 
@@ -30,6 +40,40 @@ public class Receveur extends Account{
 
     public void removeDonneur(Donneur donneur){
         donneurs.remove(donneur);
+        donneur.setReceveur(null); // Remove bidirectional relationship
+    }
+    
+    // Getter and setter for urgence
+    public Urgence getUrgence() {
+        return urgence;
+    }
+    
+    public void setUrgence(Urgence urgence) {
+        this.urgence = urgence;
+    }
+    
+    // Getter and setter for etatReceveur
+    public EtatReceveur getEtatReceveur() {
+        return etatReceveur;
+    }
+    
+    public void setEtatReceveur(EtatReceveur etatReceveur) {
+        this.etatReceveur = etatReceveur;
+    }
+    
+
+    public int getPochesRequises() {
+        return urgence != null ? urgence.getPochesRequises() : 1;
+    }
+    
+
+    public int getNombreDonneursAssocies() {
+        return donneurs != null ? donneurs.size() : 0;
+    }
+    
+
+    public boolean peutRecevoirPlusDonneurs() {
+        return getNombreDonneursAssocies() < getPochesRequises();
     }
 
     @Override
@@ -38,7 +82,9 @@ public class Receveur extends Account{
                 "id=" + getId() +
                 ", nom=" + getNom() +
                 ", prenom=" + getPrenom() +
-                ", donneurs=" + donneurs.size() +
+                ", urgence=" + urgence +
+                ", etatReceveur=" + etatReceveur +
+                ", donneurs=" + donneurs.size() + "/" + getPochesRequises() +
                 '}';
     }
 }

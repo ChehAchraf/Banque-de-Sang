@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -121,47 +122,23 @@
                                     sanguin</label>
                                 <select id="groupeSanguin" name="groupesanguin" required
                                         class="mt-2 block w-full rounded-lg border-gray-300 bg-white shadow-sm focus:ring-red-600 focus:border-red-600">
-                                    <option value="" disabled ${receveur == null ? 'selected' : ''}>Choisir un groupe
-                                    </option>
-                                    <option value="O_POS" ${receveur != null && receveur.groupesanguin.name() == 'O_POS' ? 'selected' : ''}>
-                                        O+
-                                    </option>
-                                    <option value="O_NEG" ${receveur != null && receveur.groupesanguin.name() == 'O_NEG' ? 'selected' : ''}>
-                                        O-
-                                    </option>
-                                    <option value="A_POS" ${receveur != null && receveur.groupesanguin.name() == 'A_POS' ? 'selected' : ''}>
-                                        A+
-                                    </option>
-                                    <option value="A_NEG" ${receveur != null && receveur.groupesanguin.name() == 'A_NEG' ? 'selected' : ''}>
-                                        A-
-                                    </option>
-                                    <option value="B_POS" ${receveur != null && receveur.groupesanguin.name() == 'B_POS' ? 'selected' : ''}>
-                                        B+
-                                    </option>
-                                    <option value="B_NEG" ${receveur != null && receveur.groupesanguin.name() == 'B_NEG' ? 'selected' : ''}>
-                                        B-
-                                    </option>
-                                    <option value="AB_POS" ${receveur != null && receveur.groupesanguin.name() == 'AB_POS' ? 'selected' : ''}>
-                                        AB+
-                                    </option>
-                                    <option value="AB_NEG" ${receveur != null && receveur.groupesanguin.name() == 'AB_NEG' ? 'selected' : ''}>
-                                        AB-
-                                    </option>
+                                    <option value="" disabled ${receveur == null ? 'selected' : ''}>Choisir un groupe</option>
+                                    <c:forEach var="g" items="${groupesSanguins}">
+                                        <option value="${g.name()}" ${receveur != null && receveur.groupesanguin != null && receveur.groupesanguin.name() == g.name() ? 'selected' : ''}>${g.label}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
 
                             <div>
-                                <label for="disponibilite"
-                                       class="block text-sm font-medium text-gray-700">Priorité</label>
-                                <select id="disponibilite" name="disponibilite"
+                                <label for="urgence" class="block text-sm font-medium text-gray-700">Urgence médicale</label>
+                                <select id="urgence" name="urgence" required
                                         class="mt-2 block w-full rounded-lg border-gray-300 bg-white shadow-sm focus:ring-red-600 focus:border-red-600">
-                                    <option value="" disabled ${receveur == null ? 'selected' : ''}>Choisir</option>
-                                    <option value="DISPONIBLE" ${receveur != null && receveur.disponibilite.name() == 'DISPONIBLE' ? 'selected' : ''}>
-                                        Urgent
-                                    </option>
-                                    <option value="INDISPONIBLE" ${receveur != null && receveur.disponibilite.name() == 'INDISPONIBLE' ? 'selected' : ''}>
-                                        Non urgent
-                                    </option>
+                                    <option value="" disabled ${receveur == null ? 'selected' : ''}>Choisir le niveau d'urgence</option>
+                                    <c:forEach var="u" items="${urgences}">
+                                        <option value="${u.name()}" ${receveur != null && receveur.urgence != null && receveur.urgence.name() == u.name() ? 'selected' : ''}>
+                                            ${u.description}
+                                        </option>
+                                    </c:forEach>
                                 </select>
                             </div>
 
@@ -181,6 +158,13 @@
                                     class="inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">${receveur != null ? 'Mettre à jour' : 'Enregistrer le receveur'}</button>
                         </div>
                     </form>
+                    
+                    <!-- Error Message Display -->
+                    <c:if test="${not empty error}">
+                        <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <span class="block sm:inline">${error}</span>
+                        </div>
+                    </c:if>
                 </div>
             </div>
         </div>

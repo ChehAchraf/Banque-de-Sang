@@ -93,45 +93,23 @@
                             </div>
 
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                <input type="email" id="email" name="email" autocomplete="email"
-                                       placeholder="Ex. nom.prenom@email.com"
-                                       class="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600"/>
-                            </div>
-                            <div>
                                 <label for="dateNaissance" class="block text-sm font-medium text-gray-700">Date de
                                     naissance</label>
                                 <input type="date" id="dateNaissance" name="dateNaissance" required autocomplete="bday"
                                        value="${donneur != null ? donneur.dateNaissance : ''}"
                                        class="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600"/>
                             </div>
-
-                            <div class="md:col-span-2">
-                                <label for="adresse" class="block text-sm font-medium text-gray-700">Adresse</label>
-                                <input type="text" id="adresse" name="adresse" autocomplete="street-address"
-                                       placeholder="Rue, numéro, appartement"
-                                       value="${donneur != null ? donneur.adresse : ''}"
-                                       class="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600"/>
-                            </div>
-
                             <div>
-                                <label for="ville" class="block text-sm font-medium text-gray-700">Ville</label>
-                                <input type="text" id="ville" name="ville" autocomplete="address-level2"
-                                       placeholder="Ex. Casablanca"
-                                       value="${donneur != null ? donneur.ville : ''}"
-                                       class="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600"/>
-                            </div>
-                            <div>
-                                <label for="sexe" class="block text-sm font-medium text-gray-700">Sexe</label>
+                                <label class="block text-sm font-medium text-gray-700">Sexe</label>
                                 <div class="mt-2 flex items-center gap-6">
                                     <label class="inline-flex items-center gap-2 text-gray-700">
-                                        <input type="radio" name="sexe" value="F"
+                                        <input type="radio" name="sexe" value="F" required
                                                class="text-red-600 focus:ring-red-600"
                                                <c:if test="${donneur != null && donneur.sexe == 'F'}">checked</c:if> />
                                         <span>Femme</span>
                                     </label>
                                     <label class="inline-flex items-center gap-2 text-gray-700">
-                                        <input type="radio" name="sexe" value="M"
+                                        <input type="radio" name="sexe" value="M" required
                                                class="text-red-600 focus:ring-red-600"
                                                <c:if test="${donneur != null && donneur.sexe == 'M'}">checked</c:if> />
                                         <span>Homme</span>
@@ -143,23 +121,26 @@
                                     sanguin</label>
                                 <select id="groupeSanguin" name="groupesanguin" required
                                         class="mt-2 block w-full rounded-lg border-gray-300 bg-white shadow-sm focus:ring-red-600 focus:border-red-600">
-                                    <option value="" disabled selected>Choisir un groupe</option>
+                                    <option value="" disabled ${donneur == null ? 'selected' : ''}>Choisir un groupe</option>
                                     <c:forEach var="g" items="${groupesSanguins}">
-                                        <option value="${g}" ${donneur != null && donneur.groupesanguin == g ? 'selected' : ''}>${g}</option>
+                                        <option value="${g.name()}" ${donneur != null && donneur.groupesanguin != null && donneur.groupesanguin.name() == g.name() ? 'selected' : ''}>${g.label}</option>
                                     </c:forEach>
                                 </select>
                             </div>
                             <div>
                                 <label for="disponibilite"
                                        class="block text-sm font-medium text-gray-700">Disponibilité</label>
-                                <select id="disponibilite" name="disponibilite"
+                                <select id="disponibilite" name="disponibilite" required
                                         class="mt-2 block w-full rounded-lg border-gray-300 bg-white shadow-sm focus:ring-red-600 focus:border-red-600">
-                                    <option value="" disabled selected>Choisir</option>
-                                    <option value="DISPONIBLE" ${donneur != null && donneur.disponibilite == 'DISPONIBLE' ? 'selected' : ''}>
+                                    <option value="" disabled ${donneur == null ? 'selected' : ''}>Choisir</option>
+                                    <option value="DISPONIBLE" ${donneur != null && donneur.disponibilite != null && donneur.disponibilite.name() == 'DISPONIBLE' ? 'selected' : ''}>
                                         Disponible
                                     </option>
-                                    <option value="INDISPONIBLE" ${donneur != null && donneur.disponibilite == 'INDISPONIBLE' ? 'selected' : ''}>
-                                        Indisponible
+                                    <option value="NON_DISPONIBLE" ${donneur != null && donneur.disponibilite != null && donneur.disponibilite.name() == 'NON_DISPONIBLE' ? 'selected' : ''}>
+                                        Non disponible
+                                    </option>
+                                    <option value="NON_ELIGIBLE" ${donneur != null && donneur.disponibilite != null && donneur.disponibilite.name() == 'NON_ELIGIBLE' ? 'selected' : ''}>
+                                        Non éligible
                                     </option>
                                 </select>
                             </div>
@@ -167,17 +148,17 @@
                             <div>
                                 <label for="poids" class="block text-sm font-medium text-gray-700">Poids (kg)</label>
                                 <input type="number" id="poids" name="poids" min="40" max="200" step="0.1"
-                                       placeholder="Ex. 70"
+                                       placeholder="Ex. 70" required
+                                       value="${donneur != null ? donneur.poids : ''}"
                                        class="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600"/>
                             </div>
 
                             <div class="md:col-span-2">
                                 <label for="maladie" class="block text-sm font-medium text-gray-700">Conditions
                                     médicales</label>
-                                <textarea id="maladie" name="maladie" rows="3"
-                                          value="${donneur != null ? donneur.maladie : ''}"
-                                          placeholder="Maladies chroniques, allergies, traitements en cours…"
-                                          class="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600"></textarea>
+                                <textarea id="maladie" name="maladie" rows="3" required
+                                          placeholder="Maladies chroniques, allergies, traitements en cours… (Tapez 'Aucune' si pas de conditions médicales)"
+                                          class="mt-2 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-red-600 focus:border-red-600">${donneur != null ? donneur.maladie : ''}</textarea>
                             </div>
                         </div>
 
@@ -188,14 +169,17 @@
                             </button>
                             <button type="submit"
                                     class="inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">
-                                Enregistrer le donneur
+                                ${donneur != null ? "Modifier le donneur" : "Enregistrer le donneur"}
                             </button>
                         </div>
                     </form>
-                    <% if (request.getAttribute("error") != null) { %>
-                    <p style="color:red"><%= request.getAttribute("error") %>
-                    </p>
-                    <% } %>
+                    
+                    <!-- Error Message Display -->
+                    <c:if test="${not empty error}">
+                        <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <span class="block sm:inline">${error}</span>
+                        </div>
+                    </c:if>
                 </div>
             </div>
         </div>
