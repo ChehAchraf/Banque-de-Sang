@@ -12,7 +12,7 @@
 <body class="bg-gray-100 text-gray-800">
 
 <!-- Include Navbar -->
-<jsp:include page="partials/navbar.jsp"/>
+<jsp:include page="jsp/partials/navbar.jsp"/>
 <!-- Hero Section (Index) -->
 <header class="bg-[url('assets/img/heroimage.svg')] bg-cover bg-center bg-no-repeat bg-red-600 bg-opacity-40">
     <div class="max-w-6xl mx-auto px-4 py-16 md:py-20">

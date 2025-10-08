@@ -28,7 +28,7 @@ public class ReceveurDetailsServlet extends HttpServlet {
                 Receveur receveur = service.findById(id);
                 if (receveur != null) {
                     request.setAttribute("receveur", receveur);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/receveur/details.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/receveur/details.jsp");
                     dispatcher.forward(request, response);
                     return;
                 }

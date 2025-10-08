@@ -27,10 +27,10 @@ public class ReceveurServlet extends HttpServlet {
         String action = request.getParameter("action");
         if(action == null){
             request.setAttribute("receveurs", service.findAll());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
             dispatcher.forward(request, response);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/receveur/addReceveur.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/receveur/addReceveur.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -52,7 +52,7 @@ public class ReceveurServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/operation/success.jsp");
         }catch(Exception e){
             request.setAttribute("error", e.getMessage());
-            request.getRequestDispatcher("/receveur/addReceveur.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/receveur/addReceveur.jsp").forward(request, response);
         }
     }
     

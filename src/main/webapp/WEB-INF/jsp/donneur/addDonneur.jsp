@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <img src="../assets/img/heroimage.svg" alt="Illustration du don de sang" class="w-full h-auto drop-shadow-2xl" />
+                    <img src="${pageContext.request.contextPath}/assets/img/heroimage.svg" alt="Illustration du don de sang" class="w-full h-auto drop-shadow-2xl" />
                 </div>
             </div>
         </div>
@@ -48,13 +48,13 @@
                                 <p class="mt-3 text-red-100">Une seule donation peut sauver jusqu'à trois vies. Merci pour votre générosité.</p>
                             </div>
                             <div class="mt-10 flex items-end justify-center">
-                                <img src="../assets/img/happykid.svg" alt="Don de sang" class="w-40 opacity-90">
+                                <img src="${pageContext.request.contextPath}/assets/img/happykid.svg" alt="Don de sang" class="w-40 opacity-90">
                             </div>
                         </div>
                     </div>
 
                     <div class="col-span-2 p-6 md:p-8">
-                        <form action="${pageContext.request.contextPath}/add/donneur" method="post" class="space-y-8" novalidate>
+                        <form action="${pageContext.request.contextPath}/donneur" method="post" class="space-y-8" novalidate>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="nom" class="block text-sm font-medium text-gray-700">Nom</label>

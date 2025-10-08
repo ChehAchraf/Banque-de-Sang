@@ -9,10 +9,6 @@
         <servlet-class>org.medical.banquedesang.BanqueServlet</servlet-class>
     </servlet>
 
-    <servlet>
-        <servlet-name>DonneurFormServlet</servlet-name>
-        <servlet-class>org.medical.banquedesang.controller.DonneurFormServlet</servlet-class>
-    </servlet>
 
     <servlet>
         <servlet-name>DonneurServlet</servlet-name>
@@ -35,19 +31,16 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>DonneurFormServlet</servlet-name>
-        <url-pattern>/donneur/form</url-pattern>
+        <servlet-name>DonneurServlet</servlet-name>
+        <url-pattern>/donneur/*</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>BanqueServlet</servlet-name>
-        <url-pattern>/banque-sang</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>DonneurServlet</servlet-name>
-        <url-pattern>/add/donneur</url-pattern>
-    </servlet-mapping>
+
 
     <servlet-mapping>
         <servlet-name>ReceveurServlet</servlet-name>

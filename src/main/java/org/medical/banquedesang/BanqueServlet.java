@@ -20,7 +20,7 @@ public class BanqueServlet extends HttpServlet {
         String action = request.getParameter("action");
         if (action == null) {
             request.setAttribute("receveurs", service.findAll());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
             dispatcher.forward(request, response);
             return;
         }
@@ -33,7 +33,7 @@ public class BanqueServlet extends HttpServlet {
                     Receveur receveur = service.findById(id);
                     if (receveur != null) {
                         request.setAttribute("receveur", receveur);
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/receveur/details.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/receveur/details.jsp");
                         dispatcher.forward(request, response);
                         return;
                     }
@@ -42,14 +42,14 @@ public class BanqueServlet extends HttpServlet {
             }
             // Fallback to list if id missing/invalid/not found
             request.setAttribute("receveurs", service.findAll());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
             dispatcher.forward(request, response);
             return;
         }
 
         // Unknown action → list
         request.setAttribute("receveurs", service.findAll());
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
         dispatcher.forward(request, response);
     }
 

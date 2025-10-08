@@ -11,7 +11,7 @@
     <!-- Hero with background image -->
     <header class="relative overflow-hidden">
         <div class="absolute inset-0">
-            <img src="../assets/img/heroimage.svg" alt="" aria-hidden="true" class="w-full h-full object-cover opacity-20" />
+            <img src="../../../assets/img/heroimage.svg" alt="" aria-hidden="true" class="w-full h-full object-cover opacity-20" />
         </div>
         <div class="relative bg-gradient-to-br from-red-600/90 via-red-700/90 to-red-800/90">
             <div class="max-w-6xl mx-auto px-4 py-16 md:py-20">
@@ -41,7 +41,7 @@
                                 <p class="mt-3 text-red-100">Veuillez fournir des informations exactes pour assurer une prise en charge adaptée.</p>
                             </div>
                             <div class="mt-10 flex items-end justify-center">
-                                <img src="../assets/img/happygroup.svg" alt="Receveur" class="w-40 opacity-90">
+                                <img src="../../../assets/img/happygroup.svg" alt="Receveur" class="w-40 opacity-90">
                             </div>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                             </div>
 
                             <div class="flex items-center justify-end gap-3">
-                                <a href="../index.jsp" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400">Annuler</a>
+                                <a href="../../index.jsp" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400">Annuler</a>
                                 <button type="submit" class="inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400">Enregistrer le receveur</button>
                             </div>
                         </form>
