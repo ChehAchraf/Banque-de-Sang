@@ -93,7 +93,6 @@ public class BloodCompatibilityService {
             return false;
         }
 
-        // Check medical contraindications
         if (donneur.getMaladie() != null) {
             String maladie = donneur.getMaladie().toLowerCase();
             if (maladie.contains("hépatite") || 

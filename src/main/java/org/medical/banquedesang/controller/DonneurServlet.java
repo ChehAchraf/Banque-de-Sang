@@ -202,7 +202,7 @@ public class DonneurServlet extends HttpServlet {
                     Donneur donneur = service.findById(Long.parseLong(idParam));
                     request.setAttribute("donneur", donneur);
                 } catch (Exception ignored) {
-                    // If we can't load the donneur, that's okay, form will be empty
+
                 }
             }
             

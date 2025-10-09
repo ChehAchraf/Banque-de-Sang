@@ -43,30 +43,22 @@ public class DonneurService {
         donneurDAO.delete(donneur);
     }
     
-    /**
-     * Get all compatible receivers for a specific donor
-     */
+
     public List<Receveur> getCompatibleReceveurs(Donneur donneur, List<Receveur> allReceveurs) {
         return compatibilityService.getCompatibleReceveurs(donneur, allReceveurs);
     }
     
-    /**
-     * Check if a donor is eligible for donation
-     */
+
     public boolean isDonneurEligible(Donneur donneur) {
         return compatibilityService.isDonneurEligible(donneur);
     }
     
-    /**
-     * Check blood type compatibility between donor and receiver
-     */
+
     public boolean isCompatible(Donneur donneur, Receveur receveur) {
         return compatibilityService.isBloodTypeCompatible(donneur, receveur);
     }
     
-    /**
-     * Get all available donors (DISPONIBLE status)
-     */
+
     public List<Donneur> getAvailableDonneurs() {
         return findAll().stream()
                 .filter(d -> d.getDisponibilite() == Disponibilite.DISPONIBLE)

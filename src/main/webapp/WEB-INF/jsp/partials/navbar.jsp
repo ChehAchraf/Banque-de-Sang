@@ -22,7 +22,8 @@
 
     <div class="hidden sm:flex items-center gap-8">
         <a href="#">Home</a>
-        <a href="${pageContext.request.contextPath}/donneur/form">Ajouter Donneur</a>
+        <a href="${pageContext.request.contextPath}/donneur?action=add">Ajouter Donneur</a>
+        <a href="${pageContext.request.contextPath}/donation?action=form">Opération de don</a>
         <a href="#">Contact</a>
 
 <%--        <div class="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">--%>

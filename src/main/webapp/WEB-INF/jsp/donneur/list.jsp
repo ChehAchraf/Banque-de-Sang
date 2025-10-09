@@ -104,6 +104,9 @@
                                     <div class="flex items-center space-x-3">
                                         <a href="${pageContext.request.contextPath}/donneur?action=view&id=${donneur.id}" class="text-blue-600 hover:text-blue-800">Voir</a>
                                         <a href="${pageContext.request.contextPath}/donneur?action=edit&id=${donneur.id}" class="text-green-600 hover:text-green-800">Modifier</a>
+                                        <c:if test="${donneur.disponibilite.name() == 'DISPONIBLE'}">
+                                            <a href="${pageContext.request.contextPath}/donation?action=form&donneurId=${donneur.id}" class="text-amber-600 hover:text-amber-800">Associer à un receveur</a>
+                                        </c:if>
                                         <a href="${pageContext.request.contextPath}/donneur?action=delete&id=${donneur.id}" 
                                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce donneur ?')" 
                                            class="text-red-600 hover:text-red-800">Supprimer</a>
