@@ -83,6 +83,11 @@ class ReceveurDAOTest {
         receveur.setNom("Test");
         receveur.setPrenom("Test");
         receveur.setCin("test");
+        receveur.setTelephone("test");
+        receveur.setDateNaissance(LocalDate.now());
+        receveur.setPoids(100);
+        receveur.setSexe("F");
+
         doNothing().when(receveurDAO).update(receveur);
         receveurService.update(receveur);
         verify(receveurDAO, times(1)).update(receveur); 

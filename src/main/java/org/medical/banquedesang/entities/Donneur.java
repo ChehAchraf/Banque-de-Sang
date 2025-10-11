@@ -31,4 +31,5 @@ public class Donneur extends Account{
                 ", receveur=" + (receveur != null ? receveur.getId() : "null") +
                 '}';
     }
+
 }

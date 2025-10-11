@@ -1,12 +1,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <title>${donneur != null ? "Modifier Donneur" : "Ajouter Donneur"}</title>
-    <!-- Tailwind CSS via CDN -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${donneur != null ? "Modifier Donneur" : "Ajouter Donneur"} - Banque de Sang</title>
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="font-inter bg-gray-50 min-h-screen">
 <jsp:include page="../partials/navbar.jsp"/>
 <!-- Hero Section -->
 <header class="bg-gradient-to-br from-red-600 via-red-700 to-red-800">

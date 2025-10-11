@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opération réussie</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="bg-gray-50 text-gray-800">
-    <jsp:include page="partials/navbar.jsp" />
+    <jsp:include page="../partials/navbar.jsp" />
 
     <header class="bg-gradient-to-br from-emerald-500 via-emerald-600 to-emerald-700">
         <div class="max-w-5xl mx-auto px-4 py-16 md:py-20 text-emerald-50">
