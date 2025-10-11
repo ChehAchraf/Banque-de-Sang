@@ -29,9 +29,9 @@ public class ReceveurValidation {
         if (receveur.getMaladie() == null || receveur.getMaladie().isEmpty()) {
             throw new Exception("La maladie est requise");
         }
-        if (receveur.getDisponibilite() == null) {
-            throw new Exception("La disponibilité est requise");
-        }
+//        if (receveur.getDisponibilite() == null) {
+//            throw new Exception("La disponibilité est requise");
+//        }
         if (receveur.getGroupesanguin() == null) {
             throw new Exception("Le groupe sanguin est requise");
         }
