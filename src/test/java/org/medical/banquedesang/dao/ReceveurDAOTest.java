@@ -87,6 +87,8 @@ class ReceveurDAOTest {
         receveur.setDateNaissance(LocalDate.now());
         receveur.setPoids(100);
         receveur.setSexe("F");
+        receveur.setMaladie("test");
+        receveur.setGroupesanguin(GroupeSanguin.A_POS);
 
         doNothing().when(receveurDAO).update(receveur);
         receveurService.update(receveur);

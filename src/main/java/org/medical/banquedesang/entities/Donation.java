@@ -66,4 +66,8 @@ public class Donation {
                 ", receveurId=" + (receveur != null ? receveur.getId() : "null") +
                 '}';
     }
+
+
 }
+
+

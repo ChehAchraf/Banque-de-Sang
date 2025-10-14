@@ -40,7 +40,7 @@ public class Receveur extends Account {
 
     public void removeDonneur(Donneur donneur){
         donneurs.remove(donneur);
-        donneur.setReceveur(null); // Remove bidirectional relationship
+        donneur.setReceveur(null);
     }
     
     // Getter and setter for urgence
